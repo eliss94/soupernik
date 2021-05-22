@@ -17,7 +17,7 @@ namespace Soupernik2
             }
 
 
-            Console.WriteLine("Vítej v programu Soubojovník 2.1");
+            Console.WriteLine("Vítej v programu Soupeřník 2.1");
             Console.WriteLine("Pokud chceš vybrat zápas, zmáčkni 1.");
             Console.WriteLine("Pokud chceš zadat výsledky zápasu, zmáčkni 2.");
             int vyber = int.Parse(Console.ReadLine());
