@@ -37,13 +37,13 @@ namespace Soupernik2
                     }
                 }
             }
-            predvybery = predvybery.OrderBy(x => x.PocetZapasu).ToList();
+            predvybery = predvybery.OrderByDescending(x => x.PocetZapasu).ToList();
             return predvybery;
         }
         public Zapas VyberZapas(List<Zapas> zapasy, bool odstran)
         {
             var serazenyPredvyber = PredvyberZpasy(zapasy);
-            var maloHraneBandy = serazenyPredvyber.Take(3);
+            var maloHraneBandy = serazenyPredvyber.Take(3).ToList();
             var naplanovac = new Naplanovac();
             var potencialniZapasy = naplanovac.Naplanuj(maloHraneBandy.Select(x => x.JmenoParty).ToList());
             var zapasyNaVyber = potencialniZapasy.Intersect(zapasy).ToList();

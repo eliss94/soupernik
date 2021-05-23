@@ -31,7 +31,7 @@ namespace Soupernik2
                     Console.WriteLine("Zmáčkni klávesu pro vybrání zápasu: ");
                     Console.ReadKey();
                     Console.WriteLine("Vybral jsem zápas: ");
-                    var vybranyZapas = vyberZapasu.VyberZapas(zapasy, false);
+                    var vybranyZapas = vyberZapasu.VyberZapas(zapasy, true);
                     Console.WriteLine($"Etik bude hrat: {vybranyZapas.BandaE} a Motik bude hrat: {vybranyZapas.BandaM}");
                     SerializerZapasu.Serializuj(zapasy);
 

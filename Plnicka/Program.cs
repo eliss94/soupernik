@@ -12,7 +12,7 @@ namespace Plnicka
             Console.WriteLine("Vygenerovat novy soubor zapasu? Vymaze stary stav! A/N?");
             if(Console.ReadKey().Key == ConsoleKey.A)
             {
-                List<string> tymy = new List<string>() { "kozáci", "slakeslašovci", "kamzíci", "trpošové", "vlkoušové", "stromové", "elfové" };
+                List<string> tymy = new List<string>() { "GD", "DP", "SWH", "TP", "RS", "YG", "MP" };
                 Naplanovac naplanovac = new Naplanovac();
                 var zapasy = naplanovac.Naplanuj(tymy);
 
