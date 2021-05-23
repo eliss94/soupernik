@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
+
 
 
 namespace Soupernik2
@@ -10,11 +12,11 @@ namespace Soupernik2
         {
             var zapasy = DeserializerZapasu.Deserializuj();
             var vysledky = DeserializerVysledku.DeserializujVysledky();
-            int maxId = 0;
-            if (vysledky.Count != 0)
+            if (vysledky == null)
             {
-                maxId = vysledky.Select(v => v.IDZapasu).Max();
+                vysledky = new List<Vysledek>();
             }
+            
 
 
             Console.WriteLine("Vítej v programu Soupeřník 2.1");
@@ -38,24 +40,32 @@ namespace Soupernik2
                     // List<string> vysledky = new List<string>();
                     break;
                 case 2:
+                    while (Console.ReadKey().Key != ConsoleKey.Escape)
+                    {
+                        int maxId = 0;
+                        if (vysledky.Count != 0)
+                        {
+                            maxId = vysledky.Select(v => v.IDZapasu).Max();
+                        }
+                        string vitez = "";
+                        Zapas zapas = new Zapas();
+                        int bodyVitez;
+                        int bodyPorazeny;
 
-                    string vitez = "";
-                    Zapas zapas = new Zapas();
-                    int bodyVitez;
-                    int bodyPorazeny;
-
-                    Console.WriteLine("Zadej vítěze: ");
-                    vitez = Console.ReadLine();
-                    Console.WriteLine("Zadej koho hrál Etík: ");
-                    zapas.BandaE = Console.ReadLine();
-                    Console.WriteLine("Zadej koho hrál Motík: ");
-                    zapas.BandaM = Console.ReadLine();
-                    Console.WriteLine("Zadej počet bodů vítěze: ");
-                    bodyVitez = int.Parse(Console.ReadLine());
-                    Console.WriteLine("Zadej počřet bodů poraženého: ");
-                    bodyPorazeny = int.Parse(Console.ReadLine());
-                    ZadavacVysledku zadavac = new ZadavacVysledku();
-                    vysledky = zadavac.ZadejVysledky(vysledky, vitez, zapas, bodyVitez, bodyPorazeny, maxId + 1);
+                        Console.WriteLine("Zadej vítěze (zkratka bandy): ");
+                        vitez = Console.ReadLine();
+                        Console.WriteLine("Zadej koho hrál Etík: ");
+                        zapas.BandaE = Console.ReadLine();
+                        Console.WriteLine("Zadej koho hrál Motík: ");
+                        zapas.BandaM = Console.ReadLine();
+                        Console.WriteLine("Zadej počet bodů vítěze: ");
+                        bodyVitez = int.Parse(Console.ReadLine());
+                        Console.WriteLine("Zadej počřet bodů poraženého: ");
+                        bodyPorazeny = int.Parse(Console.ReadLine());
+                        ZadavacVysledku zadavac = new ZadavacVysledku();
+                        vysledky = zadavac.ZadejVysledky(vysledky, vitez, zapas, bodyVitez, bodyPorazeny, maxId + 1);
+                        Console.WriteLine("Pokud chceš skončit s vkládáním výsledků, zmáčkni Esc");
+                    }
 
 
 
