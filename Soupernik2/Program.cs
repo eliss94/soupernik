@@ -26,18 +26,11 @@ namespace Soupernik2
             switch (vyber)
             {
                 case 1:
-
                     VyberZapasu vyberZapasu = new VyberZapasu();
-
-
-                    Console.WriteLine("Zmáčkni klávesu pro vybrání zápasu: ");
-                    Console.ReadKey();
                     Console.WriteLine("Vybral jsem zápas: ");
-                    var vybranyZapas = vyberZapasu.VyberZapas(zapasy, true);
+                    var vybranyZapas = vyberZapasu.VyberZapas(zapasy, false);
                     Console.WriteLine($"Etik bude hrat: {vybranyZapas.BandaE} a Motik bude hrat: {vybranyZapas.BandaM}");
                     SerializerZapasu.Serializuj(zapasy);
-
-                    // List<string> vysledky = new List<string>();
                     break;
                 case 2:
                     while (Console.ReadKey().Key != ConsoleKey.Escape)
@@ -51,7 +44,6 @@ namespace Soupernik2
                         Zapas zapas = new Zapas();
                         int bodyVitez;
                         int bodyPorazeny;
-
                         Console.WriteLine("Zadej vítěze (zkratka bandy): ");
                         vitez = Console.ReadLine();
                         Console.WriteLine("Zadej koho hrál Etík: ");
@@ -60,15 +52,12 @@ namespace Soupernik2
                         zapas.BandaM = Console.ReadLine();
                         Console.WriteLine("Zadej počet bodů vítěze: ");
                         bodyVitez = int.Parse(Console.ReadLine());
-                        Console.WriteLine("Zadej počřet bodů poraženého: ");
+                        Console.WriteLine("Zadej počet bodů poraženého: ");
                         bodyPorazeny = int.Parse(Console.ReadLine());
                         ZadavacVysledku zadavac = new ZadavacVysledku();
                         vysledky = zadavac.ZadejVysledky(vysledky, vitez, zapas, bodyVitez, bodyPorazeny, maxId + 1);
                         Console.WriteLine("Pokud chceš skončit s vkládáním výsledků, zmáčkni Esc");
                     }
-
-
-
                     SerializerVysledku.SerializujVysledky(vysledky);
                     break;
             }

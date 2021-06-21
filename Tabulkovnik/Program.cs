@@ -11,7 +11,7 @@ namespace Tabulkovnik
             var tableData = DeserializerVysledku.DeserializujVysledky();
             Console.WriteLine("Ahoj, vítej v Tabulkovníku");
             Console.WriteLine("Pokud chceš vypsat tabulku sumarizovaných výsledků zmáčkni 1");
-            Console.WriteLine("Pokud chceš vypsat seznam zápasů s výsledky 2");
+            Console.WriteLine("Pokud chceš vypsat seznam zápasů s výsledky zmáčkni 2");
 
             int vyber = int.Parse(Console.ReadLine());
             switch (vyber)
